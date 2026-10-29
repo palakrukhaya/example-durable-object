@@ -8,21 +8,29 @@
 	"main": "src/index.ts",
 	"compatibility_date": "2026-10-23",
 	"migrations": [
-		{
-			"new_sqlite_classes": [
-				"MyDurableObject"
-			],
-			"tag": "v1"
-		}
-	],
-	"durable_objects": {
-		"bindings": [
-			{
-				"class_name": "MyDurableObject",
-				"name": "MY_DURABLE_OBJECT"
-			}
-		]
-	},
+        {
+            "tag": "v1",
+            "new_sqlite_classes": ["MyDurableObject"]
+        },
+        // Add a new migration for your Chat room
+        {
+            "tag": "v2",
+            "new_sqlite_classes": ["ChatRoom"]
+        }
+    ],
+    "durable_objects": {
+        "bindings": [
+            {
+                "name": "MY_DURABLE_OBJECT",
+                "class_name": "MyDurableObject"
+            },
+            // Add your new Chat Room binding
+            {
+                "name": "CHAT_ROOM",
+                "class_name": "ChatRoom"
+            }
+        ]
+    },
 	"observability": {
 		"enabled": true
 	},
